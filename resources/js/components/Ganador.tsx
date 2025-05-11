@@ -10,7 +10,7 @@ type props = {
     }
 }
 
-export default function ganador({ganador}: props) {
+export default function Ganador({ganador}: props) {
     return (
         <div className="flex flex-col items-center justify-center w-full">
             <h2 className="text-2xl font-bold text-green-700 uppercase">El ganador es</h2>
