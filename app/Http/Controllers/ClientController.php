@@ -13,23 +13,18 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::orderBy('nombre')->get();
+        return inertia('Clients/Index', [
+            'clients' => $clients,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StoreClientRequest $request)
     {
-        //
+        
+        $client = Client::create($request->validated());
+        return back()->with('success', 'Cliente creado correctamente');
     }
 
     /**

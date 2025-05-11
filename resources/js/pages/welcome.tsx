@@ -3,14 +3,18 @@ import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { motion } from "motion/react";
 import Form from "@/components/Form"
+import SelectGanador from "@/components/selectGanador"
+import { Button } from '@/components/ui/button';
 
 type WelcomeProps = {
+    departamentos: [],
+    ciudades: [],
     clientes: number
 }
 
-export default function Welcome({clientes}: WelcomeProps) {
+export default function Welcome({ departamentos, ciudades, clientes }: WelcomeProps) {
+    console.log(clientes);
     const { auth } = usePage<SharedData>().props;
-
     return (
         <>
             <Head title="Welcome">
@@ -28,19 +32,29 @@ export default function Welcome({clientes}: WelcomeProps) {
                     }}
                     className="relative flex flex-col gap-4 items-center justify-center px-4"
                 >
-                        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-                           Bienvenido al concurso
-                        </div>
-                        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-                           Solo tienes que inscribirte
-                        </div>
-                        <Form></Form>
-                        <div className=''>
-                            El consurso comenzará pronto
-                        </div>
+                    <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
+                        Bienvenido al concurso
+                    </div>
+                    <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
+                        Solo tienes que inscribirte
+                    </div>
+                    <Form departamentos={departamentos} ciudades={ciudades}></Form>
+                    <SelectGanador></SelectGanador>
+                    {
+                        clientes < 3 ? <div >
+                            <div className=''>
+                                El consurso comenzará pronto
+                            </div>
+                            <div>
+                                Ya tenemos {clientes} participantes
+                            </div>
+                        </div> :
                         <div>
-                            Ya tenemos más de {clientes} participantes
+                            
                         </div>
+                    }
+
+
                 </motion.div>
             </AuroraBackground>
         </>

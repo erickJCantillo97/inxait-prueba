@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ciudad extends Model
+class Departamento extends Model
 {
-    /** @use HasFactory<\Database\Factories\CiudadFactory> */
+    /** @use HasFactory<\Database\Factories\DepartamentoFactory> */
     use HasFactory;
+
     protected $fillable = [
-        'departamento_id',
         'nombre',
     ];
 }
