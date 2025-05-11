@@ -16,6 +16,7 @@ import InputError from "./input-error";
 import { LoaderCircle } from "lucide-react";
 import { Checkbox } from '@/components/ui/checkbox';
 import Select from 'react-select'
+import { ToastContainer, toast } from 'react-toastify';
 
 type ClientForm = {
     nombre: string;
@@ -67,12 +68,24 @@ export default function AlertDialogDemo({ departamentos, ciudades }: props) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
+        if (!data.habeas_data) {
+            toast("Debes aceptar el tratamiento de datos", {
+                type: "error",
+            });
+            return;
+        }
         post(route('clients.store'), {
-            onFinish: () => {
-                reset();
+           onSuccess: () => {
+                toast("Estas Registrado Correctamente", {
+                    type: "success",
+                });
                 setOpen(false);
-            },
+                reset();
+           },
             onError: (errors) => {
+                toast("Ocurrio un error al registrar el cliente", {
+                    type: "error",
+                });
                 console.log(errors);
             },
             preserveScroll: true,
@@ -181,13 +194,13 @@ export default function AlertDialogDemo({ departamentos, ciudades }: props) {
                             </div>
                             <div className="flex items-center space-x-3">
                                 <Checkbox
-                                    id="remember"
-                                    name="remember"
+                                    id="habeas_data"
+                                    name="habeas_data"
                                     checked={data.habeas_data}
                                     onClick={() => setData('habeas_data', !data.habeas_data)}
                                     tabIndex={3}
                                 />
-                                <Label htmlFor="remember">Autorizo el tratamiento de mis datos de acuerdo con la
+                                <Label htmlFor="habeas_data">Autorizo el tratamiento de mis datos de acuerdo con la
                                     finalidad establecida en la política de protección de datos personales</Label>
                             </div>
 
@@ -203,6 +216,7 @@ export default function AlertDialogDemo({ departamentos, ciudades }: props) {
                     X
                 </AlertDialogCancel>
             </AlertDialogContent>
+             <ToastContainer />
         </AlertDialog>
     )
 }

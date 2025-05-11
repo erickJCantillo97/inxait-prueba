@@ -17,7 +17,7 @@ export default function Welcome({ departamentos, ciudades, clientes }: WelcomePr
     const { auth } = usePage<SharedData>().props;
     return (
         <>
-            <Head title="Welcome">
+            <Head title="Inicio">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
             </Head>
@@ -39,19 +39,18 @@ export default function Welcome({ departamentos, ciudades, clientes }: WelcomePr
                         Solo tienes que inscribirte
                     </div>
                     <Form departamentos={departamentos} ciudades={ciudades}></Form>
-                    <SelectGanador></SelectGanador>
+                    
                     {
-                        clientes < 3 ? <div >
-                            <div className=''>
-                                El consurso comenzará pronto
-                            </div>
-                            <div>
-                                Ya tenemos {clientes} participantes
-                            </div>
-                        </div> :
-                        <div>
-                            
-                        </div>
+                        clientes < 5 ?
+                            <div className='text-center  w-full items-center justify-center flex flex-col'>
+                                <p>
+                                El concurso comenzará pronto
+                                </p>
+                                <p>
+                                Tenemos {clientes} participantes
+                                </p>
+                            </div> : <SelectGanador></SelectGanador>
+                        
                     }
 
 

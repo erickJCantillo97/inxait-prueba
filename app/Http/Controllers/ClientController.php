@@ -30,9 +30,12 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function getGanador()
     {
-        //
+        $ganador = Client::inRandomOrder()->first();
+        return response()->json([
+            'ganador' => $ganador,
+        ]);
     }
 
     /**
