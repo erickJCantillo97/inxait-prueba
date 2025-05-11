@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 import axios from "axios"
 import React from "react"
 import { InfinitySpin } from 'react-loader-spinner'
-import Ganador from "@/components/ganador"
+import Ganador from "@/components/Ganador"
 
 export default function AlertDialogDemo() {
   const [ganador, setGanador] = React.useState(null)
@@ -36,17 +36,13 @@ export default function AlertDialogDemo() {
             <InfinitySpin
             width="200"
             color="green"
-          />  :
-             <Ganador ganador={ganador} /> 
-              
+          />  : <Ganador ganador={ganador} />
           }
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-red-600 hover:bg-red-500 hover:text-white cursor-pointer text-white absolute -top-4 py-2 px-3 -right-3 rounded-full">
-                             X
-                         </AlertDialogCancel>
+          <AlertDialogCancel>Cerrar</AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
