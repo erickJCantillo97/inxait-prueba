@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::resource('clients', ClientController::class);
 Route::get('getGanador', [ClientController::class, 'getGanador'])->name('get.ganador');
+Route::get('download', [ClientController::class, 'download'])->name('download');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('departamentos', function (Blueprint $table) {
+            $table->id();
+            $table->string("nombre");
+            $table->timestamps();
+        });
         Schema::create('ciudads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('departamento_id')->constrained();

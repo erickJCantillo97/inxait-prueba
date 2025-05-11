@@ -20,4 +20,13 @@ class Client extends Model
         'departamento_id',
         'habeas_data',
     ];
+
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class);
+    }
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
 }

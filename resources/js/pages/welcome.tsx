@@ -15,6 +15,8 @@ type WelcomeProps = {
 export default function Welcome({ departamentos, ciudades, clientes }: WelcomeProps) {
     console.log(clientes);
     const { auth } = usePage<SharedData>().props;
+
+
     return (
         <>
             <Head title="Inicio">
@@ -39,21 +41,22 @@ export default function Welcome({ departamentos, ciudades, clientes }: WelcomePr
                         Solo tienes que inscribirte
                     </div>
                     <Form departamentos={departamentos} ciudades={ciudades}></Form>
-                    
+
                     {
                         clientes < 5 ?
                             <div className='text-center  w-full items-center justify-center flex flex-col'>
                                 <p>
-                                El concurso comenzará pronto
+                                    El concurso comenzará pronto
                                 </p>
                                 <p>
-                                Tenemos {clientes} participantes
+                                    Tenemos {clientes} participantes
                                 </p>
                             </div> : <SelectGanador></SelectGanador>
-                        
+
                     }
-
-
+                    <a target='_blank' href={route('download')}>
+                        <Button>Descargar CSV</Button>
+                    </a>
                 </motion.div>
             </AuroraBackground>
         </>
