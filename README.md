@@ -18,6 +18,28 @@ Ahí encontrará las diferentes funciones que se solicitaron para la ejecución 
 
 La aplicación esta preparada para usar la base de datos que usted decida, el primer paso es crear la base de datos en el gestor que desee.
 
+siga los siguientes pasos: 
+
+1. Clone el proyecto:
+    ```
+    git clone https://github.com/erickJCantillo97/inxait-prueba.git
+    ```
+3. Dirigase a la raiz del proyecto y ejecute los siguientes comandos
+   ```
+   cp .env.example .env
+   composer install
+   npm install --legacy-peer-deps
+   php artisan key:generate
+    ```
+5. El nuevo archvio **.env** configure la BD.
+6. Ejecute el proyecto con los comandos.
+   ```
+   npm run build
+   php artisan serve
+    ```
+
+Muchas gracias una vez mas y espero me vaya bien en esta prueba
+
 
 
 
